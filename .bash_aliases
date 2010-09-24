@@ -18,6 +18,14 @@ eba() {
     vim ~/.bash_aliases
 }
 
+pmr() {
+    python manage.py runserver
+}
+
+pms() {
+    python manage.py shell
+}
+
 pmt() {
     python manage.py test $1
 }
