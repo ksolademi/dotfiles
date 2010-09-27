@@ -10,6 +10,8 @@ set scrolloff=5
 set hls
 "set nosmartindent
 
+colorscheme pablo
+
 " To make it so smartindent doesn't unindent python comment lines 
 " (lines beginning with '#')
 :inoremap # X#

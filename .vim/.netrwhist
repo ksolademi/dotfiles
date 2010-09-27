@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/keith/.virtualenvs/lexile_reader/lexile_reader_dirty/web/nose_exclude'
 let g:netrw_dirhist_2='/home/keith/.virtualenvs/lexile_reader/engaging_english_dirty/web/templates/assessments/tags'
 let g:netrw_dirhist_3='/etc/apt/sources.list.d'
 let g:netrw_dirhist_4='/usr/share/pyshared/gtk-2.0/gtk/gtkgl'
 let g:netrw_dirhist_5='/home/keith/devel/virtenv/ee/ee_badges/engaging_english/web/ee_badges'
 let g:netrw_dirhist_6='/home/keith/devel/virtenv/ee/ee_sprint_11/web/api'
+let g:netrw_dirhist_7='/home/keith/devel/virtenv/ee/ee-sprint-12/web/templates/account/widgets'

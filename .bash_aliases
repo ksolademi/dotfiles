@@ -18,12 +18,20 @@ eba() {
     vim ~/.bash_aliases
 }
 
+wee(){
+    workon ee
+}
+
 pmr() {
     python manage.py runserver
 }
 
 pms() {
     python manage.py shell
+}
+
+pmy() {
+    python manage.py syncdb
 }
 
 pmt() {
