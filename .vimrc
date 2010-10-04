@@ -10,7 +10,8 @@ set scrolloff=5
 set hls
 "set nosmartindent
 
-colorscheme pablo
+" pablo scheme fails for bash vim. For gvim it is excellent.
+"colorscheme pablo
 
 " To make it so smartindent doesn't unindent python comment lines 
 " (lines beginning with '#')
@@ -43,4 +44,4 @@ autocmd BufReadPost *
     \     endif |
     \ endif
 
-map! <F2> from IPython.Shell import IPShellEmbed<CR>ipshell = IPShellEmbed()<CR>ipshell() 
+map! <F2> from IPython.Shell import IPShellEmbed<CR>ipshell = IPShellEmbed()<CR>ipshell()<CR><ESC>
