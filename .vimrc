@@ -15,7 +15,7 @@ set hls
 
 " To make it so smartindent doesn't unindent python comment lines 
 " (lines beginning with '#')
-:inoremap # X#
+:inoremap # X<BS>#
 
 " For code completion.
 filetype plugin on
