@@ -10,6 +10,9 @@ set scrolloff=5
 set hls
 "set nosmartindent
 
+"For Eclim - can be 'edit', 'split', or 'lopen'
+let g:EclimPythonSearchSingleResult='edit'
+
 " pablo scheme fails for bash vim. For gvim it is excellent.
 "colorscheme pablo
 
