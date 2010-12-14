@@ -2,6 +2,12 @@
     cd ..
 }
 
+alias git="git-achievements"
+
+starteclim(){
+    ~/opt/eclipse/eclimd
+}
+
 b() {
     cd -
 }
@@ -38,6 +44,14 @@ pmt() {
     python manage.py test $1
 }
 
+djt() {
+    cd ..
+    svn up
+    cd -
+    rm analyzer/nettrekker/proseclassifier/svm.py*
+    ./manage.py test --settings=test_settings $1
+}
+
 src(){
     source ~/.bashrc
 }
@@ -49,6 +63,46 @@ recreate(){
 
 destroy(){
     mysql -u root -pr00t -e "drop database $1"
+}
+
+sync-test(){
+    ./manage.py syncdb --settings=test_settings --noinput
+}
+
+migrate-test(){
+    ./manage.py migrate --all --settings=test_settings
+}
+
+dj-init-ramdisk(){
+    echo "It's good to run me after system restarts."
+    echo "When mysql isn't attached to a ramdisk"
+    echo "that may or may not exist."
+    echo "Also, it is good to run me in same dir as manage.py lives,"
+    echo "and I need to know what database to recreate, sync, and "
+    echo "migrate"
+    ~/devel/mysql-ramdisk/mysql-ramdisk.py -c -m
+    create-test $1
+    workon ee
+    sync-test
+    migrate-test
+}
+
+
+dbshell-test(){
+    ./manage.py dbshell --settings=test_settings
+}
+
+recreate-test(){
+    mysql -u root --socket=/tmp/mysql.ramdisk.sock -e "drop database $1"
+    mysql -u root --socket=/tmp/mysql.ramdisk.sock -e "create database $1"
+}
+
+destroy-test(){
+    mysql -u root --socket=/tmp/mysql.ramdisk.sock -e "drop database $1"
+}
+
+create-test(){
+    mysql -u root --socket=/tmp/mysql.ramdisk.sock -e "create database $1"
 }
 
 myhelp(){
@@ -90,6 +144,7 @@ eec(){
 
 # Start solr.
 ees(){
+    sudo mount -t tmpfs -o size=1M tmpfs /mnt/solr-ramdisk/
     workon ee
     cd ~/devel/tools/apache-solr-1.4.0/example
     java -jar start.jar
