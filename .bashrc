@@ -4,6 +4,9 @@
 export PATH=/home/keith/temp:$PATH
 export PYTHONPATH=$HOME/devel/onpythonpath
 
+# My server.
+export gobblemeister=184.106.94.66
+
 # Stuff for virtualenv(wrapper)
 export WORKON_HOME=$HOME/.virtualenvs
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
@@ -14,6 +17,10 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 export REPOS=http://ksolademi@magicbox:80/svn
 export EE=engagingenglish.com
+
+# Tweaking the python shell (perhaps ipython shell as well)
+PYTHONSTARTUP=~/.pythonrc.py
+export PYTHONSTARTUP
 
 # Stuff to make java not useless (insalling solr:http://www.tc.umn.edu/~brams006/solr_ubuntu.html
 export PATH=/opt/jdk1.6.0_18/bin:$PATH

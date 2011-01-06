@@ -122,11 +122,18 @@ def execf(fname):
 # Django stuff (source: http://djangosnippets.org/snippets/549/)
 def setup_django_env():
     from django.db.models.loading import get_models
+    from django.conf import settings
 
     print "Importing ..."
     for m in get_models():
-        print m.__name__
         ip.ex("from %s import %s" % (m.__module__, m.__name__))
+
+    # Output alphabetic list of imported modules.
+    module_names = [i.__name__ for i in get_models()]
+    module_names.sort()
+
+    for name in module_names:
+        print name
 
 
 main()

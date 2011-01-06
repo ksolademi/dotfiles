@@ -44,16 +44,34 @@ pmt() {
     python manage.py test $1
 }
 
-djt() {
+rmsvm(){
+    rm analyzer/nettrekker/proseclassifier/svm.py*
+}
+
+djut() {
     cd ..
     svn up
     cd -
-    rm analyzer/nettrekker/proseclassifier/svm.py*
+    rmsvm
+    ./manage.py test --settings=test_settings $1
+}
+
+
+djt() {
+    rmsvm
     ./manage.py test --settings=test_settings $1
 }
 
 src(){
     source ~/.bashrc
+}
+
+show-dbs() {
+    mysql -u root -pr00t -e "show databases;"
+}
+
+show-test-dbs() {
+    mysql -u root --socket=/tmp/mysql.ramdisk.sock -e "show databases;"
 }
 
 recreate(){
@@ -86,7 +104,6 @@ dj-init-ramdisk(){
     sync-test
     migrate-test
 }
-
 
 dbshell-test(){
     ./manage.py dbshell --settings=test_settings
