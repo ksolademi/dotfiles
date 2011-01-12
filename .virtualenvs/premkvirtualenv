@@ -1,0 +1,8 @@
+#!/bin/sh
+# This hook is run after a new virtualenv is created and before it is activated.
+
+VENV_NAME=`basename $1`
+PROJ_DIR=$PROJECTS_HOME/$VENV_NAME
+if [ ! -d $PROJ_DIR ]; then
+    mkdir $PROJ_DIR
+fi

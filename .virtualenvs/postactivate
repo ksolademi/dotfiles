@@ -1,0 +1,5 @@
+proj_dir=$PROJECTS_HOME/`basename $VIRTUAL_ENV`
+if [[ ! $PWD == $proj_dir* ]]
+then
+    cd $proj_dir
+fi
