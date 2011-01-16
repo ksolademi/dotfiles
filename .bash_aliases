@@ -2,6 +2,10 @@
     cd ..
 }
 
+sai() {
+    sudo aptitude install $1
+}
+
 alias git="git-achievements"
 
 starteclim(){
@@ -146,6 +150,11 @@ ee(){
     workon ee
     cddevelvenv
     cd ee
+}
+
+eet() {
+  ee
+  cd trunk/engaging_english/web
 }
 
 eed(){
