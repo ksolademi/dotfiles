@@ -3,6 +3,17 @@
 }
 
 alias git="git-achievements"
+alias hi="history"
+alias vsl="vim settings_local.py"
+
+fvim() {
+    find -iname "$1*" | xargs vim
+    reset
+}
+
+gh() {
+    history | grep $1
+}
 
 starteclim(){
     ~/opt/eclipse/eclimd
@@ -27,6 +38,9 @@ eba() {
 wee(){
     workon ee
 }
+
+alias csu="python manage.py createsuperuser"
+alias pdd="python manage.py populate_demo_data"
 
 pmr() {
     python manage.py runserver
@@ -74,8 +88,16 @@ show-test-dbs() {
     mysql -u root --socket=/tmp/mysql.ramdisk.sock -e "show databases;"
 }
 
-recreate(){
+mysql-ramdisk() {
+    mysql -u root --socket=/tmp/mysql.ramdisk.sock 
+}
+
+reacreate-db(){
     mysql -u root -pr00t -e "drop database $1"
+    mysql -u root -pr00t -e "create database $1"
+}
+
+create-db(){
     mysql -u root -pr00t -e "create database $1"
 }
 
@@ -87,8 +109,32 @@ sync-test(){
     ./manage.py syncdb --settings=test_settings --noinput
 }
 
+#igrate-test(){
+#   ./manage.py migrate --all --settings=test_settings
+#
+
 migrate-test(){
-    ./manage.py migrate --all --settings=test_settings
+    ./manage.py migrate $1 $2 --settings=test_settings
+}
+
+migrate(){
+    ./manage.py migrate $1 $2
+}
+
+sync(){
+    ./manage.py syncdb
+}
+
+yoyo(){
+    echo $1 $2
+}
+
+dj-init-db(){
+    echo I will create a db, sync that bitch, and run migrations all over it
+    create-db $1
+    rmsvm
+    sync
+    migrate --all
 }
 
 dj-init-ramdisk(){
@@ -99,17 +145,18 @@ dj-init-ramdisk(){
     echo "and I need to know what database to recreate, sync, and "
     echo "migrate"
     ~/devel/mysql-ramdisk/mysql-ramdisk.py -c -m
+    sleep 2;
     create-test $1
     workon ee
     sync-test
-    migrate-test
+    migrate-test --all
 }
 
 dbshell-test(){
     ./manage.py dbshell --settings=test_settings
 }
 
-recreate-test(){
+recreate-test-db(){
     mysql -u root --socket=/tmp/mysql.ramdisk.sock -e "drop database $1"
     mysql -u root --socket=/tmp/mysql.ramdisk.sock -e "create database $1"
 }
@@ -146,6 +193,16 @@ ee(){
     workon ee
     cddevelvenv
     cd ee
+}
+
+eee(){
+    workon ee
+    cd -
+}
+
+eesp(){
+    ee
+    cd sprint-17/web/
 }
 
 eed(){
@@ -204,7 +261,23 @@ eessh(){
 }
 
 pysearch() {
-    grep -Ir --include=*.py $1 *
+    grep -nIr --include=*.py $1 *
+}
+
+tgrep() {
+    grep -nIr --include=tests.py $1 *
+}
+
+pygrep() {
+    grep -nIr --include=*.py $1 *
+}
+
+hgrep() {
+    grep -nIr --include=*.html --include=*.js --include=*.css $1 *
+}
+
+hfind() {
+    find -iname "$1*.html"
 }
 
 rmpyc() {
