@@ -2,6 +2,10 @@
     cd ..
 }
 
+sai() {
+    sudo aptitude install $1
+}
+
 alias git="git-achievements"
 alias hi="history"
 alias vsl="vim settings_local.py"
@@ -203,6 +207,10 @@ eee(){
 eesp(){
     ee
     cd sprint-17/web/
+}
+eet() {
+  ee
+  cd trunk/engaging_english/web
 }
 
 eed(){
