@@ -1,3 +1,5 @@
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 syntax on
 set nu
 set tabstop=4
@@ -8,7 +10,15 @@ set expandtab
 set autoindent
 set scrolloff=5
 set hls
+set incsearch
 "set nosmartindent
+" Make vim use Perl/Python regexes for searching.
+nnoremap / /\v
+vnoremap / /\v
+
+" Lowercase searches are case insensitive, uppercase are sensitive.
+set ignorecase
+set smartcase
 
 "For Eclim - can be 'edit', 'split', or 'lopen'
 let g:EclimPythonSearchSingleResult='edit'
@@ -48,3 +58,4 @@ autocmd BufReadPost *
     \ endif
 
 map! <F2> from IPython.Shell import IPShellEmbed<CR>ipshell = IPShellEmbed()<CR>ipshell()<CR><ESC>
+map! <F3> from ipdb import set_trace; set_trace()
