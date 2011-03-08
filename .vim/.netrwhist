@@ -1,4 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/keith/devel/virtenv/marketing/marketing/.git'
 let g:netrw_dirhist_2='/home/keith/devel/onpythonpath'
+let g:netrw_dirhist_3='/home/keith/Dropbox/devel/virtenv/ee/trunk/engaging_english/web/engaging_english'
+let g:netrw_dirhist_4='/home/keith/Dropbox/devel/virtenv/ee/trunk/engaging_english/web/reporting'
+let g:netrw_dirhist_5='/home/keith/Dropbox/devel/virtenv/ee/up_down_voting/contrib/djangoratings'
+let g:netrw_dirhist_6='/usr/share/nevernote'
+let g:netrw_dirhist_7='/home/keith/Dropbox/devel/virtenv/ee/trunk/contrib/django/core/management'
